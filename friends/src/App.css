@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .App-logo {
@@ -23,11 +24,44 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.friendsListCSS {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.formCSS {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  align-items: center;
+}
+
+.formCSS h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.friendsFormCSS {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.friendInput {
+  margin: 3% 0;
+  padding: 5%;
+}
+
+.addFriend {
+  background: rgb(133, 133, 226);
+  border: none;
+  margin: 3% 0;
+  padding: 3%;
+  width: 55%;
+  text-align: center;
+  color: white;
 }

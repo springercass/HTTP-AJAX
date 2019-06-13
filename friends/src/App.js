@@ -1,26 +1,75 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import axios from "axios";
+import { Route } from "react-router-dom";
+import FriendsList from "../src/components/FriendsList";
+import FriendsForm from "../src/components/FriendsForm";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      friends: [],
+      name: "",
+      age: "",
+      email: ""
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:5000/friends")
+      .then(response => {
+        console.log(response);
+        this.setState({ friends: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  addFriend = event => {
+    event.preventDefault();
+    const newFriend = {
+      name: this.state.name,
+      age: parseInt(this.state.age),
+      email: this.state.email
+    };
+    axios
+      .post("http://localhost:5000/friends", newFriend)
+      .then(response => {
+        console.log(response);
+        this.setState({
+          friends: response.data
+        });
+      })
+      .catch(error => {
+        this.setState({ error: error.message });
+      });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Route
+          exact
+          path="/"
+          render={props => (
+            <FriendsList {...props} friends={this.state.friends} />
+          )}
+        />
+        <FriendsForm
+          {...this.state}
+          handleChange={this.handleChange}
+          addFriend={this.addFriend}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
