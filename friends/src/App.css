@@ -42,6 +42,8 @@
 .formCSS h2 {
   text-align: center;
   font-size: 2rem;
+  margin: 2%;
+  padding: 0;
 }
 
 .friendsFormCSS {
@@ -64,4 +66,20 @@
   width: 55%;
   text-align: center;
   color: white;
+}
+
+.addFriend:hover {
+  cursor: pointer;
+}
+
+.returnHome {
+  background: rgb(133, 133, 226);
+  border: none;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
+.returnHome:hover {
+  cursor: pointer;
 }
