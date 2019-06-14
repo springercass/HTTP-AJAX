@@ -29,7 +29,8 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    this.getFriends();
+    const id = this.props.match.params.id;
+    this.getFriends(id);
   }
 
   handleChange = event => {
@@ -46,7 +47,6 @@ class App extends React.Component {
     axios
       .post("http://localhost:5000/friends", newFriend)
       .then(response => {
-        console.log(response);
         this.setState({
           friends: response.data
         });
@@ -69,11 +69,14 @@ class App extends React.Component {
       });
   };
 
-  updateFriend = (id, event) => {
-    axios.put(`http://localhost:5000/friends/${id}`).then(() => {
-      this.getFriends();
-      this.props.history.push("/friends");
-    });
+  updateFriend = (event, updated, id) => {
+    event.preventDefault();
+    axios
+      .put(`http://localhost:5000/friends/${id}`, updated)
+      .then(response => {
+        this.setState({ friends: response.data });
+      })
+      .catch(error => console.log(error));
   };
 
   render() {
@@ -94,6 +97,7 @@ class App extends React.Component {
                 friends={this.state.friends}
                 handleChange={this.handleChange}
                 addFriend={this.addFriend}
+                id={this.id}
               />{" "}
             </div>
           )}
