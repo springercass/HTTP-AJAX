@@ -1,0 +1,85 @@
+.App {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.friendsListCSS {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.formCSS {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  align-items: center;
+}
+
+.formCSS h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 2%;
+  padding: 0;
+}
+
+.friendsFormCSS {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.friendInput {
+  margin: 3% 0;
+  padding: 5%;
+}
+
+.addFriend {
+  background: rgb(133, 133, 226);
+  border: none;
+  margin: 3% 0;
+  padding: 3%;
+  width: 55%;
+  text-align: center;
+  color: white;
+}
+
+.addFriend:hover {
+  cursor: pointer;
+}
+
+.returnHome {
+  background: rgb(133, 133, 226);
+  border: none;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
+.returnHome:hover {
+  cursor: pointer;
+}
